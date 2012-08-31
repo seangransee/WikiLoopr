@@ -25,6 +25,8 @@ find_first_link_in_page = (pagename, ret) ->
     $(doc).find('.metadata').remove()
     $(doc).find('.ambox').remove()
     $(doc).find('#coordinates').remove()
+    $(doc).find('.geography').remove()
+    $(doc).find('.right').remove()
     paragraphs = $(doc).find('p')
     link = find_first_link_in_elements paragraphs
     return ret link if link?
@@ -44,7 +46,6 @@ find_first_link_in_elements = (elements) ->
     $(element).find('img').remove()
     $(element).find('b').remove()
     $(element).find('strong').remove()
-    
     i = 0
     links = []
     $(element).find('a').each ->
@@ -68,12 +69,9 @@ find_all_links = (pagename, visited) ->
       visited.push link
       find_all_links link, visited
     else
+      console.log link
       $('#results a').last().addClass('end')
-      $('a:contains("'+link+'")').each ->
-        elem = $(this)
-        console.log $(elem).text() == link
-        if $(elem).text() is link
-          $(elem).addClass('end')
+      $('a[href$="'+link+'"]').addClass('end')
       $('#start input').removeAttr('disabled')
       $('#loading').fadeOut()
 
