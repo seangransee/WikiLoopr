@@ -1,4 +1,5 @@
 load_wiki_page = (pagename, ret) ->
+  console.log 'http://en.wikipedia.org/w/api.php?action=parse&format=json&redirects=&prop=text&page=' + pagename
   $.ajax
     url: 'http://en.wikipedia.org/w/api.php?action=parse&format=json&redirects=&prop=text&page=' + pagename
     dataType: 'jsonp'
@@ -16,6 +17,7 @@ find_first_link_in_page = (pagename, ret) ->
     $(doc).append html
     $(doc).find('table').remove()
     $(doc).find('.dablink').remove()
+    $(doc).find('.thumb').remove()
     paragraphs = $(doc).find('p')
     link = find_first_link_in_elements paragraphs
     return ret link if link?
@@ -33,6 +35,8 @@ find_first_link_in_elements = (elements) ->
     $(element).find('.extiw').remove()
     $(element).find('.IPA').remove()
     $(element).find('img').remove()
+    $(element).find('b').remove()
+    $(element).find('#coordinates').remove()
     i = 0
     links = []
     $(element).find('a').each ->
@@ -69,6 +73,7 @@ find_all_links = (pagename, visited) ->
       $('#loading').fadeOut()
 
 put_on_page = (href, title) ->
+  console.log title
   $('#start input').attr('disabled', 'disabled')
   $('#start input').blur()
   $('.ui-autocomplete').hide()
