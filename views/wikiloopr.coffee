@@ -32,6 +32,7 @@ find_first_link_in_elements = (elements) ->
     $(element).find('.nowrap').remove()
     $(element).find('.extiw').remove()
     $(element).find('.IPA').remove()
+    $(element).find('img').remove()
     i = 0
     links = []
     $(element).find('a').each ->
