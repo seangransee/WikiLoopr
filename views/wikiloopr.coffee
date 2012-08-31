@@ -1,5 +1,4 @@
 load_wiki_page = (pagename, ret) ->
-  console.log pagename
   $.ajax
     url: 'http://en.wikipedia.org/w/api.php?action=parse&format=json&redirects=&prop=text&page=' + pagename
     dataType: 'jsonp'
@@ -9,8 +8,6 @@ load_wiki_page = (pagename, ret) ->
       else
         put_on_page pagename, page.parse.title
         ret page.parse.text['*']
-    error: ->
-      console.log 'ERROR'
 
 find_first_link_in_page = (pagename, ret) ->
   load_wiki_page pagename, (html) ->
@@ -45,7 +42,6 @@ find_first_link_in_elements = (elements) ->
     $(element).append paragraphHTML
     linkIndex = $(element).find('a').first().attr('href')
     link = links[linkIndex]
-    console.log link
     return link.substr(6) if link?
 
 
@@ -96,6 +92,27 @@ window.onpopstate = (e) ->
     find_all_links e.state.query, []
 
 $ ->
+
+  $("#start input").autocomplete source: (request, response) ->
+    $.ajax
+      url: "http://en.wikipedia.org/w/api.php"
+      dataType: "jsonp"
+      data:
+        action: "opensearch"
+        format: "json"
+        search: request.term
+
+      success: (data) ->
+        response data[1]
+        $('li a.ui-corner-all').click ->
+          $('#results').empty()
+          pagename = $(this).text()
+          stateObj = {query: pagename}
+          history.pushState(stateObj, pagename, '/'+pagename)
+          find_all_links pagename, []
+
+
+
   $('#results').empty()
   if query.length > 0
     $('#start input').val(query)
