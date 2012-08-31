@@ -64,6 +64,7 @@ find_all_links = (pagename, visited) ->
       $('a:contains("'+link+'")').addClass('end')
 
 put_on_page = (href, title) ->
+  $('.ui-autocomplete').hide()
   $('#results a').last().removeClass('end1')
   link = document.createElement('a')
   $(link).attr('href', 'http://en.wikipedia.org/wiki/' + href)
@@ -87,6 +88,7 @@ swapColors = ->
 window.onpopstate = (e) ->
   if e.state?
     $('#results').clearQueue()
+    $('li').clearQueue()
     $('#results').empty()
     $('#start input').val(e.state.query)
     find_all_links e.state.query, []
@@ -118,6 +120,9 @@ $ ->
     $('#start input').val(query)
     find_all_links query, []
   $('#start').submit (e) ->
+    $('.ui-autocomplete').hide()
+    $('#results').clearQueue()
+    $('li').clearQueue()
     $('#results').empty()
     e.preventDefault()
     pagename = $(this).find('input').val()
