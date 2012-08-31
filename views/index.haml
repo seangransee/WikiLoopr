@@ -24,6 +24,7 @@
           %input{:type => 'text', :placeholder => "#{@start}"}
 
       %ul#results
+      %img#loading{:src => '/loading.gif'}
 
       :javascript
         var query = "#{@query}";

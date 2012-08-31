@@ -55,7 +55,7 @@ remove_parens = (html) ->
     remove_parens html.substr(0, first_paren)+html.substr(second_paren + 1)
 
 find_all_links = (pagename, visited) ->
-
+  $('#loading').fadeIn()
   find_first_link_in_page pagename, (link) ->
     if link not in visited
       visited.push link
@@ -64,6 +64,7 @@ find_all_links = (pagename, visited) ->
       $('#results a').last().addClass('end')
       $('a:contains("'+link+'")').addClass('end')
       $('#start input').removeAttr('disabled')
+      $('#loading').fadeOut()
 
 put_on_page = (href, title) ->
   $('#start input').attr('disabled', 'disabled')
@@ -121,10 +122,12 @@ $ ->
 
   $('#results').empty()
   if query.length > 0
+    $('#start input').blur()
     $('#start input').val(query)
     find_all_links query, []
   $('#start').submit (e) ->
     $('.ui-autocomplete').hide()
+    $('#start input').blur()
     $('#results').clearQueue()
     $('li').clearQueue()
     $('#results').empty()
