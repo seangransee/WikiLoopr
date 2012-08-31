@@ -4,7 +4,8 @@ load_wiki_page = (pagename, ret) ->
     dataType: 'jsonp'
     success: (page) ->
       if page.error?
-        put_on_page '#', page.error.info
+        put_on_page '', page.error.info
+        $('#start input').removeAttr('disabled')
       else
         put_on_page pagename, page.parse.title
         ret page.parse.text['*']
@@ -62,8 +63,11 @@ find_all_links = (pagename, visited) ->
     else
       $('#results a').last().addClass('end')
       $('a:contains("'+link+'")').addClass('end')
+      $('#start input').removeAttr('disabled')
 
 put_on_page = (href, title) ->
+  $('#start input').attr('disabled', 'disabled')
+  $('#start input').blur()
   $('.ui-autocomplete').hide()
   $('#results a').last().removeClass('end1')
   link = document.createElement('a')
@@ -71,7 +75,7 @@ put_on_page = (href, title) ->
   $(link).text(title).addClass('end1').attr('target', '_blank')
   item = $(document.createElement('li')).append(link).hide()
   $('#results').append(item)
-  $(item).fadeIn(100)
+  $(item).fadeIn(300)
   $("html, body").animate
     scrollTop: $(item).offset().top
   , 0
