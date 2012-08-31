@@ -1,4 +1,5 @@
 load_wiki_page = (pagename, ret) ->
+  console.log pagename
   $.ajax
     url: 'http://en.wikipedia.org/w/api.php?action=parse&format=json&redirects=&prop=text&page=' + pagename
     dataType: 'jsonp'
@@ -31,6 +32,7 @@ find_first_link_in_elements = (elements) ->
     $(element).find('.new').remove()
     $(element).find('sup').remove()
     $(element).find('.nowrap').remove()
+    $(element).find('.extiw').remove()
     i = 0
     links = []
     $(element).find('a').each ->
@@ -43,6 +45,7 @@ find_first_link_in_elements = (elements) ->
     $(element).append paragraphHTML
     linkIndex = $(element).find('a').first().attr('href')
     link = links[linkIndex]
+    console.log link
     return link.substr(6) if link?
 
 
@@ -86,19 +89,22 @@ swapColors = ->
     $(endItems[1]).removeClass 'end1'
 
 window.onpopstate = (e) ->
-  $('#results').empty()
-  $('#start input').val(e.state.query)
-  find_all_links e.state.query, []
+  if e.state?
+    $('#results').clearQueue()
+    $('#results').empty()
+    $('#start input').val(e.state.query)
+    find_all_links e.state.query, []
 
 $ ->
+  $('#results').empty()
   if query.length > 0
-    $('#results').empty()
     $('#start input').val(query)
     find_all_links query, []
   $('#start').submit (e) ->
     $('#results').empty()
     e.preventDefault()
     pagename = $(this).find('input').val()
+    pagename = $(this).find('input').attr('placeholder') if pagename is ''
     stateObj = {query: pagename}
     history.pushState(stateObj, pagename, '/'+pagename)
     find_all_links pagename, []

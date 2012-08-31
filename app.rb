@@ -4,6 +4,11 @@ require 'sass'
 
 get '/' do
   @query = nil
+  chosen_line = nil
+  File.foreach("startlist.txt").each_with_index do |line, number|
+    chosen_line = line if rand < 1.0/(number+1)
+  end
+  @start = chosen_line
   haml :index
 end
 
@@ -17,5 +22,6 @@ end
 
 get '/:query' do
   @query = params[:query]
+  @start = "Obama"
   haml :index
 end

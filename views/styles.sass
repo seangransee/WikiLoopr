@@ -1,6 +1,9 @@
 $red: #662222
 $blue: #0c2433
 
+body
+  background-color: #EEE
+
 #main
   width: 850px
   margin: 0 auto
@@ -15,6 +18,14 @@ $blue: #0c2433
   #explanation
     text-align: left
     margin-top: 20px
+    .blue
+      color: $blue
+
+  #small
+    text-align: left
+    font-size: 60%
+    margin-top: 10px
+    color: $blue
 
   #search
     margin-top: 20px
@@ -30,11 +41,13 @@ $blue: #0c2433
         border: 3px solid $blue
         font-size: 100%
         width: 400px
-        background-color: #EEE
+        background-color: #DDD
         margin-top: -10px
 
   #results
-    margin-top: 20px
+    margin:
+      top: 20px
+      bottom: 60px
     list-style-type: none
     li
       margin-bottom: 10px

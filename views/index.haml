@@ -9,18 +9,22 @@
   %body
 
     #main
-      %img#logo{:src => '/logo.png'}
+      %a{:href => '/'}
+        %img#logo{:src => '/logo.png'}
 
-      #explanation The first link* in a Wikipedia article will take you to a broader subject. Repeat this over and over, and you’ll almost always end up in the same loop. Don’t believe me? Try it yourself.
+      #explanation The first link<span class="blue">*</span> in a Wikipedia article will take you to a broader subject. Repeat this over and over, and you’ll almost always end up in the same loop. Don’t believe me? Try it yourself.
+      #small *not in parantheses or italics
 
-      #search
+      #search{}
         %form#start
           %span#startat Start at 
-          %input{:type => 'text', :placeholder => 'Sean Gransee'}
+          %input{:type => 'text', :placeholder => "#{@start}"}
 
       %ul#results
 
-      %script
-        =['var query = "', @query, '";'].join ""
+      :javascript
+        //=['var query = "', @query, '";'].join ""
+        //var query = #{@query};
+        var query = "#{@query}";
 
       %script{:src => '/wikiloopr.js'}
