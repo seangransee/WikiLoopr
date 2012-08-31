@@ -17,9 +17,12 @@ find_first_link_in_page = (pagename, ret) ->
       html = html.replace intRegex, ''
     doc = document.createElement('html')
     $(doc).append html
-    $(doc).find('table').remove()
+    $(doc).find('.infobox').remove()
     $(doc).find('.dablink').remove()
     $(doc).find('.thumb').remove()
+    $(doc).find('.vcard').remove()
+    $(doc).find('.vertical-navbox').remove()
+    $(doc).find('#coordinates').remove()
     paragraphs = $(doc).find('p')
     link = find_first_link_in_elements paragraphs
     return ret link if link?
@@ -38,7 +41,8 @@ find_first_link_in_elements = (elements) ->
     $(element).find('.IPA').remove()
     $(element).find('img').remove()
     $(element).find('b').remove()
-    $(element).find('#coordinates').remove()
+    $(element).find('strong').remove()
+    
     i = 0
     links = []
     $(element).find('a').each ->
@@ -49,7 +53,6 @@ find_first_link_in_elements = (elements) ->
     parenRegex = /\((.*?)\)/
     while paragraphHTML.match parenRegex
       paragraphHTML = paragraphHTML.replace parenRegex, ''
-    console.log paragraphHTML
     element = document.createElement('p')
     $(element).append paragraphHTML
     linkIndex = $(element).find('a').first().attr('href')
