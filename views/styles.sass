@@ -1,2 +1,46 @@
-h1
-  color: blue
+$red: #662222
+$blue: #0c2433
+
+#main
+  width: 850px
+  margin: 0 auto
+  text-align: center
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
+  color: $red
+  font-size: 140%
+
+  #logo
+    margin-top: 20px
+
+  #explanation
+    text-align: left
+    margin-top: 20px
+
+  #search
+    margin-top: 20px
+    font-size: 200%
+
+    #startat
+      margin-top: -8px
+
+    #start
+      margin-top: 40px
+
+      input
+        border: 3px solid $blue
+        font-size: 100%
+        width: 400px
+        background-color: #EEE
+        margin-top: -10px
+
+  #results
+    margin-top: 20px
+    list-style-type: none
+    li
+      margin-bottom: 10px
+      a
+        text-decoration: none
+        color: $red
+        &.end1
+          color: $blue
+          font-weight: bold
