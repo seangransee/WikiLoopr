@@ -1,5 +1,4 @@
 load_wiki_page = (pagename, ret) ->
-  console.log 'http://en.wikipedia.org/w/api.php?action=parse&format=json&redirects=&prop=text&page=' + pagename
   $.ajax
     url: 'http://en.wikipedia.org/w/api.php?action=parse&format=json&redirects=&prop=text&page=' + pagename
     dataType: 'jsonp'
@@ -13,6 +12,9 @@ load_wiki_page = (pagename, ret) ->
 
 find_first_link_in_page = (pagename, ret) ->
   load_wiki_page pagename, (html) ->
+    intRegex = /<img[^']*?src=\"([^']*?)\"[^']*?>/
+    while html.match intRegex
+      html = html.replace intRegex, ''
     doc = document.createElement('html')
     $(doc).append html
     $(doc).find('table').remove()
@@ -44,21 +46,15 @@ find_first_link_in_elements = (elements) ->
       $(this).attr('href', i)
       i += 1
     paragraphHTML = $(element).html()
-    paragraphHTML = remove_parens paragraphHTML
+    parenRegex = /\((.*?)\)/
+    while paragraphHTML.match parenRegex
+      paragraphHTML = paragraphHTML.replace parenRegex, ''
+    console.log paragraphHTML
     element = document.createElement('p')
     $(element).append paragraphHTML
     linkIndex = $(element).find('a').first().attr('href')
     link = links[linkIndex]
     return link.substr(6) if link?
-
-
-remove_parens = (html) ->
-  first_paren = html.indexOf('(')
-  second_paren = first_paren + html.substr(first_paren).indexOf(')')
-  if first_paren == -1 or first_paren > second_paren
-    return html
-  else
-    remove_parens html.substr(0, first_paren)+html.substr(second_paren + 1)
 
 find_all_links = (pagename, visited) ->
   $('#loading').fadeIn()
@@ -73,7 +69,6 @@ find_all_links = (pagename, visited) ->
       $('#loading').fadeOut()
 
 put_on_page = (href, title) ->
-  console.log title
   $('#start input').attr('disabled', 'disabled')
   $('#start input').blur()
   $('.ui-autocomplete').hide()
