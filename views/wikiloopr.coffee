@@ -22,6 +22,8 @@ find_first_link_in_page = (pagename, ret) ->
     $(doc).find('.thumb').remove()
     $(doc).find('.vcard').remove()
     $(doc).find('.vertical-navbox').remove()
+    $(doc).find('.metadata').remove()
+    $(doc).find('.ambox').remove()
     $(doc).find('#coordinates').remove()
     paragraphs = $(doc).find('p')
     link = find_first_link_in_elements paragraphs
