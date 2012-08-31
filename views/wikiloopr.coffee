@@ -69,7 +69,11 @@ find_all_links = (pagename, visited) ->
       find_all_links link, visited
     else
       $('#results a').last().addClass('end')
-      $('a:contains("'+link+'")').addClass('end')
+      $('a:contains("'+link+'")').each ->
+        elem = $(this)
+        console.log $(elem).text() == link
+        if $(elem).text() is link
+          $(elem).addClass('end')
       $('#start input').removeAttr('disabled')
       $('#loading').fadeOut()
 
