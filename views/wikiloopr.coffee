@@ -29,12 +29,13 @@ find_first_link_in_page = (pagename, ret) ->
     $(doc).find('.geography').remove()
     $(doc).find('.right').remove()
     $(doc).find('.toc').remove()
-    paragraphs = $(doc).find('p')
-    link = find_first_link_in_elements paragraphs
+    link = find_first_link_in_elements $(doc).find('p')
     return ret link if link?
-    lis = $(doc).find('li')
-    link = find_first_link_in_elements lis
+    link = find_first_link_in_elements $(doc).find('li')
     return ret link if link?
+    link = find_first_link_in_elements $(doc).find('td')
+    return ret link if link?
+
 
 
 find_first_link_in_elements = (elements) ->
