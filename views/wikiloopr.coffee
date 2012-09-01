@@ -28,6 +28,7 @@ find_first_link_in_page = (pagename, ret) ->
     $(doc).find('#coordinates').remove()
     $(doc).find('.geography').remove()
     $(doc).find('.right').remove()
+    $(doc).find('.toc').remove()
     paragraphs = $(doc).find('p')
     link = find_first_link_in_elements paragraphs
     return ret link if link?
@@ -116,8 +117,6 @@ showResults = ->
   $('#results li a').each ->
     if i is 0
       $('.first').text $(this).text() 
-    console.log $(this).text()
-    console.log $(this).hasClass 'loopstart' 
     if $(this).hasClass 'loopstart' 
       initialLength = i - 1
       $('.initialLength').text initialLength 
