@@ -50,6 +50,8 @@ find_first_link_in_elements = (elements) ->
     $(element).find('b').remove()
     $(element).find('strong').remove()
     $(element).find('.unicode').remove()
+    $(element).find('small').remove() 
+    console.log 'asfadsf'
     i = 0
     links = []
     $(element).find('a').each ->
