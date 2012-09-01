@@ -27,6 +27,13 @@
       %ul#results
       %img#loading{:src => '/loading.gif'}
 
+      #side
+        %span.first
+        %span.initialLength
+        %span.loopstart
+        %span.loopLength
+        %span.loopend
+
       :javascript
         var query = "#{@query}";
 

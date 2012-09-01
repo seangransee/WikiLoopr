@@ -69,11 +69,11 @@ find_all_links = (pagename, visited) ->
       visited.push link
       find_all_links link, visited
     else
-      console.log link
-      $('#results a').last().addClass('end')
-      $('a[href$="'+link+'"]').addClass('end')
+      $('#results a').last().addClass('end').addClass('loopend')
+      $('a[href$="'+link+'"]').addClass('end').addClass('loopstart')
       $('#start input').removeAttr('disabled')
       $('#loading').fadeOut()
+      showResults()
 
 put_on_page = (href, title) ->
   $('#start input').attr('disabled', 'disabled')
@@ -107,6 +107,24 @@ window.onpopstate = (e) ->
     $('#start input').val(e.state.query)
     find_all_links e.state.query, []
 
+showResults = ->
+  i = 0
+  initialLength = 0
+  $('#results li a').each ->
+    if i is 0
+      $('.first').text $(this).text() 
+    console.log $(this).text()
+    console.log $(this).hasClass 'loopstart' 
+    if $(this).hasClass 'loopstart' 
+      initialLength = i - 1
+      $('.initialLength').text initialLength 
+      $('.loopstart').text $(this).text() 
+    i++
+  loopLength = i - initialLength - 3
+  $('.loopLength').text loopLength 
+  $('.loopend').text $('#results li a').last().text()
+  $('#side').fadeIn()
+
 $ ->
 
   $("#start input").autocomplete source: (request, response) ->
@@ -126,7 +144,6 @@ $ ->
           stateObj = {query: pagename}
           history.pushState(stateObj, pagename, '/'+pagename)
           find_all_links pagename, []
-
 
 
   $('#results').empty()
