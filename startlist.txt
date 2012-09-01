@@ -30,8 +30,8 @@ Alaska
 Chicago
 Northwestern University
 Hawaii
-Dog
-Cat
+dog
+cat
 iPhone
 How I Met Your Mother
 Julius Caesar

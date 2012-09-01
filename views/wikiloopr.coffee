@@ -76,6 +76,7 @@ find_all_links = (pagename, visited) ->
       showResults()
 
 put_on_page = (href, title) ->
+  $('#side').fadeOut()
   $('#start input').attr('disabled', 'disabled')
   $('#start input').blur()
   $('.ui-autocomplete').hide()
