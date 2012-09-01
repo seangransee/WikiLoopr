@@ -1,5 +1,4 @@
 load_wiki_page = (pagename, ret) ->
-  console.log pagename
   $.ajax
     url: 'http://en.wikipedia.org/w/api.php?action=parse&format=json&redirects=&prop=text&page=' + pagename
     dataType: 'jsonp'
