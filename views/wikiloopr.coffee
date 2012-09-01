@@ -18,17 +18,8 @@ find_first_link_in_page = (pagename, ret) ->
       html = html.replace intRegex, ''
     doc = document.createElement('html')
     $(doc).append html
-    $(doc).find('.infobox').remove()
-    $(doc).find('.dablink').remove()
-    $(doc).find('.thumb').remove()
-    $(doc).find('.vcard').remove()
-    $(doc).find('.vertical-navbox').remove()
-    $(doc).find('.metadata').remove()
-    $(doc).find('.ambox').remove()
-    $(doc).find('#coordinates').remove()
-    $(doc).find('.geography').remove()
-    $(doc).find('.right').remove()
-    $(doc).find('.toc').remove()
+    taglist = ['.infobox', '.dablink', '.thumb', '.vcard', '.vertical-navbox', '.metadata', '.ambox', '#coordinates', '.geography', '.right', '.toc']
+    doc = remove_tags(doc, taglist)
     link = find_first_link_in_elements $(doc).find('p')
     return ret link if link?
     link = find_first_link_in_elements $(doc).find('li')
@@ -36,22 +27,15 @@ find_first_link_in_page = (pagename, ret) ->
     link = find_first_link_in_elements $(doc).find('td')
     return ret link if link?
 
-
+remove_tags = (element, tags) ->
+  for tag in tags
+    $(element).find(tag).remove()
+  return element
 
 find_first_link_in_elements = (elements) ->
   for element in elements
-    $(element).find('i').remove()
-    $(element).find('.new').remove()
-    $(element).find('sup').remove()
-    $(element).find('.nowrap').remove()
-    $(element).find('.extiw').remove()
-    $(element).find('.IPA').remove()
-    $(element).find('img').remove()
-    $(element).find('b').remove()
-    $(element).find('strong').remove()
-    $(element).find('.unicode').remove()
-    $(element).find('small').remove() 
-    console.log 'asfadsf'
+    taglist = ['i', '.new', 'sup', '.nowrap', '.exitw', '.IPA', 'img', 'b', 'strong', '.unicode', 'small']
+    element = remove_tags(element, taglist)
     i = 0
     links = []
     $(element).find('a').each ->
