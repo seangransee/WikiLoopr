@@ -1,4 +1,5 @@
 load_wiki_page = (pagename, ret) ->
+  console.log pagename
   $.ajax
     url: 'http://en.wikipedia.org/w/api.php?action=parse&format=json&redirects=&prop=text&page=' + pagename
     dataType: 'jsonp'
@@ -46,6 +47,7 @@ find_first_link_in_elements = (elements) ->
     $(element).find('img').remove()
     $(element).find('b').remove()
     $(element).find('strong').remove()
+    $(element).find('.unicode').remove()
     i = 0
     links = []
     $(element).find('a').each ->
