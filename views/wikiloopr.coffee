@@ -89,12 +89,16 @@ swapColors = ->
     $(endItems[0]).addClass 'end1'
     $(endItems[1]).removeClass 'end1'
 
+setTitle = (query) ->
+  $('title').text('Wikipedia loop for '+query)
+
 window.onpopstate = (e) ->
   if e.state?
     $('#results').clearQueue()
     $('li').clearQueue()
     $('#results').empty()
     $('#start input').val(e.state.query)
+    setTitle(e.state.query)
     find_all_links e.state.query, []
 
 showResults = ->
@@ -148,6 +152,7 @@ $ ->
     e.preventDefault()
     pagename = $(this).find('input').val()
     pagename = $(this).find('input').attr('placeholder') if pagename is ''
+    setTitle(pagename)
     stateObj = {query: pagename}
     history.pushState(stateObj, pagename, '/'+pagename)
     find_all_links pagename, []

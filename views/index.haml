@@ -10,7 +10,10 @@
     <meta property="og:title" content="WikiLoopr - Find loops in the network of Wikipedia links" />
     <meta property="og:url" content="http://wikiloopr.com" />
     
-    %title WikiLoopr - Find loops in the network of Wikipedia links
+    - if @query
+      %title Wikipedia loop for #{@query}
+    - else
+      %title WikiLoopr - Find loops in the network of Wikipedia links
 
   %body
 
