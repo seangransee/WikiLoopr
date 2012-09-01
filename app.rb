@@ -22,6 +22,6 @@ end
 
 get '/:query' do
   @query = params[:query]
-  @start = "Obama"
+  @start = ""
   haml :index
 end
