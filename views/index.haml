@@ -7,7 +7,8 @@
     %link{:href => '/styles.css', :rel => 'stylesheet', :type => 'text/css'}
     <link rel="icon" type="image/png" href="/favicon.png">
     <meta property="og:image" content="http://wikiloopr.com/logo_letters.png" />
-    
+    <meta name="description" property="og:description" content="The first link in a Wikipedia article will take you to a broader subject. Repeat this over and over, and you'll enter a loop. See for yourself!" />
+
     - if @query
       %title Wikipedia loop for #{@query}
     - else
