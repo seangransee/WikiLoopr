@@ -1,4 +1,5 @@
 load_wiki_page = (pagename, ret) ->
+  console.log pagename
   $.ajax
     url: 'http://en.wikipedia.org/w/api.php?action=parse&format=json&redirects=&prop=text&page=' + pagename
     dataType: 'jsonp'
@@ -33,7 +34,7 @@ remove_tags = (element, tags) ->
 
 find_first_link_in_elements = (elements) ->
   for element in elements
-    taglist = ['i', '.new', 'sup', '.nowrap', '.exitw', '.IPA', 'img', 'b', 'strong', '.unicode', 'small']
+    taglist = ['i', '.new', 'sup', '.nowrap', '.extiw', '.IPA', 'img', 'b', 'strong', '.unicode', 'small']
     element = remove_tags(element, taglist)
     i = 0
     links = []
