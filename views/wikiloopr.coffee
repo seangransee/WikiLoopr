@@ -12,9 +12,9 @@ load_wiki_page = (pagename, ret) ->
 
 find_first_link_in_page = (pagename, ret) ->
   load_wiki_page pagename, (html) ->
-    intRegex = /<img[^']*?src=\"([^']*?)\"[^']*?>/
-    while html.match intRegex
-      html = html.replace intRegex, ''
+    imgRegex = /<img[^']*?src=\"([^']*?)\"[^']*?>/
+    while html.match imgRegex
+      html = html.replace imgRegex, ''
     doc = document.createElement('html')
     $(doc).append html
     taglist = ['.infobox', '.dablink', '.thumb', '.vcard', '.vertical-navbox', '.metadata', '.ambox', '#coordinates', '.geography', '.right', '.toc']
