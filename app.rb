@@ -2,10 +2,17 @@ require 'sinatra'
 require 'coffee-script'
 require 'sass'
 
+before do
+  @lang = request.host.split('.')[0]
+  if @lang == 'localhost' or @lang == 'wikiloopr'
+    @lang = 'en'
+  end
+end
+
 get '/' do
   @query = nil
   chosen_line = nil
-  File.foreach("startlist.txt").each_with_index do |line, number|
+  File.foreach("startlists/"+@lang+".startlist.txt").each_with_index do |line, number|
     chosen_line = line if rand < 1.0/(number+1)
   end
   @start = chosen_line

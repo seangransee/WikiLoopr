@@ -1,6 +1,6 @@
 load_wiki_page = (pagename, ret) ->
   $.ajax
-    url: 'http://en.wikipedia.org/w/api.php?action=parse&format=json&redirects=&prop=text&page=' + pagename
+    url: 'http://'+lang+'.wikipedia.org/w/api.php?action=parse&format=json&redirects=&prop=text&page=' + pagename
     dataType: 'jsonp'
     success: (page) ->
       if page.error?
@@ -71,7 +71,7 @@ put_on_page = (href, title) ->
   $('.ui-autocomplete').hide()
   $('#results a').last().removeClass('end1')
   link = document.createElement('a')
-  $(link).attr('href', 'http://en.wikipedia.org/wiki/' + href)
+  $(link).attr('href', 'http://'+lang+'.wikipedia.org/wiki/' + href)
   $(link).text(title).addClass('end1').attr('target', '_blank')
   item = $(document.createElement('li')).append(link).hide()
   $('#results').append(item)
@@ -121,7 +121,7 @@ $ ->
 
   $("#start input").autocomplete source: (request, response) ->
     $.ajax
-      url: "http://en.wikipedia.org/w/api.php"
+      url: "http://"+lang+".wikipedia.org/w/api.php"
       dataType: "jsonp"
       data:
         action: "opensearch"
