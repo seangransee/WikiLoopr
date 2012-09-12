@@ -54,9 +54,9 @@ find_first_link_in_elements = (elements) ->
       $(this).attr('href', i)
       i += 1
     paragraphHTML = $(element).html()
-    parenRegex = /\((.*?)\)/
-    while paragraphHTML.match parenRegex
-      paragraphHTML = paragraphHTML.replace parenRegex, ''
+    #parenRegex = /\((.*?)\)/
+    paragraphHTML = paragraphHTML.replace(/\(.[^\(]*?\)/g, "") while paragraphHTML.match(/\(.+?\)/g)
+    paragraphHTML = paragraphHTML.replace(/\s+/g, " ")
     element = document.createElement('p')
     $(element).append paragraphHTML
     linkIndex = $(element).find('a').first().attr('href')
