@@ -54,14 +54,12 @@ find_first_link_in_elements = (elements) ->
       $(this).attr('href', i)
       i += 1
     paragraphHTML = $(element).html()
-    #parenRegex = /\((.*?)\)/
     paragraphHTML = paragraphHTML.replace(/\(.[^\(]*?\)/g, "") while paragraphHTML.match(/\(.+?\)/g)
     paragraphHTML = paragraphHTML.replace(/\s+/g, " ")
     element = document.createElement('p')
     $(element).append paragraphHTML
     linkIndex = $(element).find('a').first().attr('href')
     link = links[linkIndex]
-    console.log link.substr(6) if link?
     return link.substr(6) if link?
   firstBoldLink = $(boldItems).find('a').first().attr('href')
   return firstBoldLink.substr(6) if firstBoldLink?

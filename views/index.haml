@@ -10,9 +10,9 @@
     <meta name="description" property="og:description" content="#{@copy['description'][@lang]}" />
 
     - if @query
-      %title #{@copy['title']['lang']} #{@query}
+      %title #{@copy['title'][@lang]} #{@query}
     - else
-      %title WikiLoopr - Find loops in the network of Wikipedia links
+      %title WikiLoopr - #{@copy['frontTitle'][@lang]}
 
   %body
 
