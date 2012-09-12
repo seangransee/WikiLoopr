@@ -90,7 +90,7 @@ swapColors = ->
     $(endItems[1]).removeClass 'end1'
 
 setTitle = (query) ->
-  $('title').text('Wikipedia loop for '+query)
+  $('title').text(title+" "+query)
 
 window.onpopstate = (e) ->
   if e.state?

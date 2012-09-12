@@ -1,12 +1,14 @@
 require 'sinatra'
 require 'coffee-script'
 require 'sass'
+require 'json'
 
 before do
   @lang = request.host.split('.')[0]
   if @lang == 'localhost' or @lang == 'wikiloopr'
     @lang = 'en'
   end
+  @copy = JSON.parse(File.read("copy.json"))
 end
 
 get '/' do

@@ -1,0 +1,46 @@
+{
+  "main": {
+    "en": "The first link<span class='blue'>*</span> in a Wikipedia article will take you to a broader subject. Repeat this over and over, and you'll usually end up in a similar loop. Don't believe me? Try it yourself.",
+    "ru": "Первая ссылка<span class='blue'>*</span> в любой статье Википедии приведет вас к более широкой теме. Повторяя это действие снова и снова, вы вероятно окажитесь в аналогичном цикле. Не верите? Попробуйте сами."
+  },
+
+  "asterisk": {
+    "en": "not in parentheses or italics",
+    "ru": "Не написанная курсивом или в скобках"
+  },
+
+  "start": {
+    "en": "Start at",
+    "ru": "Начните с"
+  },
+
+  "brought": {
+    "en": "Brought to you by",
+    "ru": "Предоставлено вам"
+  },
+
+  "coded": {
+    "en": "Coded with love by",
+    "ru": "Код написан с любовью"
+  },
+
+  "source": {
+    "en": "Source code available on",
+    "ru": "Исходный код доступен на"
+  },
+
+  "donating": {
+    "en": "Consider donating to",
+    "ru": "Постарайтесь пожертвовать"
+  },
+
+  "description": {
+    "en": "The first link in a Wikipedia article will take you to a broader subject. Repeat this over and over, and you'll enter a loop. See for yourself!",
+    "ru": "Первая ссылка в любой статье Википедии приведет вас к более широкой теме. Повторяя это действие снова и снова, вы вероятно окажитесь в повторяющемся цикле. Попробуйте сами!"
+  },
+
+  "title": {
+    "en": "Wikipedia loop for",
+    "ru": "Викицикл для"
+  }
+}

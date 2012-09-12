@@ -7,10 +7,10 @@
     %link{:href => '/styles.css', :rel => 'stylesheet', :type => 'text/css'}
     <link rel="icon" type="image/png" href="/favicon.png">
     <meta property="og:image" content="http://wikiloopr.com/logo_letters.png" />
-    <meta name="description" property="og:description" content="The first link in a Wikipedia article will take you to a broader subject. Repeat this over and over, and you'll enter a loop. See for yourself!" />
+    <meta name="description" property="og:description" content="#{@copy['description'][@lang]}" />
 
     - if @query
-      %title Wikipedia loop for #{@query}
+      %title #{@copy['title']['lang']} #{@query}
     - else
       %title WikiLoopr - Find loops in the network of Wikipedia links
 
@@ -20,12 +20,12 @@
       %a{:href => '/'}
         %img#logo{:src => '/logo.png', :alt => 'WikiLoopr'}
 
-      #explanation The first link<span class="blue">*</span> in a Wikipedia article will take you to a broader subject. Repeat this over and over, and you’ll usually end up in a similar loop. Don’t believe me? Try it yourself.
-      #small *not in parantheses or italics
+      #explanation= @copy['main'][@lang]
+      #small *#{@copy['asterisk'][@lang]}
 
       #search{}
         %form#start
-          %span#startat Start at 
+          %span#startat= @copy['start'][@lang]
           %input{:type => 'text', :placeholder => "#{@start}"}
 
       %ul#results
@@ -39,19 +39,20 @@
         %span.loopend
 
     #bottomleft.bottom
-      Brought to you by<br />
+      #{@copy['brought'][@lang]}<br />
       %a{:href => 'http://www.syndiosocial.com/the-philosophy-of-networks/'}
         %img{:src => '/syndio.png', :alt => 'Syndio Social'}
 
     #bottomright.bottom
-      Coded with love by <a href="http://twitter.com/seangransee">Sean Gransee</a>.<br />
-      <a href="https://github.com/seangransee/WikiLoopr">Source code</a> available on GitHub.<br />
-      Consider <a href="http://wikimediafoundation.org/wiki/Donate/en">donating</a> to Wikipedia.
+      #{@copy['coded'][@lang]} <a href="http://twitter.com/seangransee">Sean Gransee</a>.<br />
+      #{@copy['source'][@lang]} <a href="https://github.com/seangransee/WikiLoopr">GitHub</a>.<br />
+      #{@copy['donating'][@lang]} <a href="http://wikimediafoundation.org/wiki/Donate/en">Wikipedia</a>.
       
 
       :javascript
         var query = "#{@query}";
         var lang = "#{@lang}";
+        var title = "#{@copy['title'][@lang]}";
 
       <script type="text/javascript" src="jquery-ui-1.8.23.custom.min.js"></script>
       %script{:src => '/wikiloopr.js'}
