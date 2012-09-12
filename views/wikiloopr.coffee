@@ -17,7 +17,7 @@ find_first_link_in_page = (pagename, ret) ->
       html = html.replace imgRegex, ''
     doc = document.createElement('html')
     $(doc).append html
-    taglist = ['.infobox', '.dablink', '.thumb', '.vcard', '.vertical-navbox', '.metadata', '.ambox', '#coordinates', '.geography', '.right', '.toc', '.nowraplinks', '.collapsible', '.collapsed', '.navbox-inner']
+    taglist = ['.infobox', '.dablink', '.thumb', '.vcard', '.vertical-navbox', '.metadata', '.ambox', '#coordinates', '.geography', '.right', '.toc', '.nowraplinks', '.collapsible', '.collapsed', '.navbox-inner', '.toccolours']
     doc = remove_tags(doc, taglist)
     for table in $(doc).find('table')
       if $(table).css('float') == 'right'
@@ -60,6 +60,7 @@ find_first_link_in_elements = (elements) ->
     $(element).append paragraphHTML
     linkIndex = $(element).find('a').first().attr('href')
     link = links[linkIndex]
+    console.log link.substr(6) if link?
     return link.substr(6) if link?
   firstBoldLink = $(boldItems).find('a').first().attr('href')
   return firstBoldLink.substr(6) if firstBoldLink?
