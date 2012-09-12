@@ -17,7 +17,7 @@ find_first_link_in_page = (pagename, ret) ->
       html = html.replace imgRegex, ''
     doc = document.createElement('html')
     $(doc).append html
-    taglist = ['.infobox', '.dablink', '.thumb', '.vcard', '.vertical-navbox', '.metadata', '.ambox', '#coordinates', '.geography', '.right', '.toc']
+    taglist = ['.infobox', '.dablink', '.thumb', '.vcard', '.vertical-navbox', '.metadata', '.ambox', '#coordinates', '.geography', '.right', '.toc', '.nowraplinks', '.collapsible', '.collapsed', '.navbox-inner']
     doc = remove_tags(doc, taglist)
     link = find_first_link_in_elements $(doc).find('p, li')
     return ret link if link?
