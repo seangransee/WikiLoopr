@@ -19,11 +19,7 @@ find_first_link_in_page = (pagename, ret) ->
     $(doc).append html
     taglist = ['.infobox', '.dablink', '.thumb', '.vcard', '.vertical-navbox', '.metadata', '.ambox', '#coordinates', '.geography', '.right', '.toc']
     doc = remove_tags(doc, taglist)
-    link = find_first_link_in_elements $(doc).find('p')
-    return ret link if link?
-    link = find_first_link_in_elements $(doc).find('li')
-    return ret link if link?
-    link = find_first_link_in_elements $(doc).find('td')
+    link = find_first_link_in_elements $(doc).find('p, li, td')
     return ret link if link?
 
 remove_tags = (element, tags) ->
