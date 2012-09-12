@@ -32,7 +32,18 @@ remove_tags = (element, tags) ->
     $(element).find(tag).remove()
   return element
 
+Array::remove = ->
+  what = undefined
+  a = arguments_
+  L = a.length
+  ax = undefined
+  while L and @length
+    what = a[--L]
+    @splice ax, 1  until (ax = @indexOf(what)) is -1
+  this
+
 find_first_link_in_elements = (elements) ->
+  boldItems = $(elements).find('b, strong')
   for element in elements
     taglist = ['i', '.new', 'sup', '.nowrap', '.extiw', '.IPA', 'img', 'b', 'strong', '.unicode', 'small']
     element = remove_tags(element, taglist)
@@ -50,7 +61,10 @@ find_first_link_in_elements = (elements) ->
     $(element).append paragraphHTML
     linkIndex = $(element).find('a').first().attr('href')
     link = links[linkIndex]
+    console.log link.substr(6) if link?
     return link.substr(6) if link?
+  firstBoldLink = $(boldItems).find('a').first().attr('href')
+  return firstBoldLink.substr(6) if firstBoldLink?
 
 find_all_links = (pagename, visited) ->
   $('#loading').fadeIn()
