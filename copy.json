@@ -2,60 +2,70 @@
   "main": {
     "en": "The first link<span class='blue'>*</span> in a Wikipedia article will take you to a broader subject. Repeat this over and over, and you'll usually end up in a similar loop. Don't believe me? Try it yourself.",
     "ru": "Первая ссылка<span class='blue'>*</span> в любой статье Википедии приведет вас к более широкой теме. Повторяя это действие снова и снова, вы вероятно окажитесь в аналогичном цикле. Не верите? Попробуйте сами.",
-    "nl": "De eerste link<span class='blue'>*</span> in een Wikipedia artikel stuurt je naar een breder (meer algemeen) onderwerp. Herhaal dit keer op keer en je komt uiteindelijk in een loop terecht die er heltzelfde uitziet. gellof je me niet? Probeer hetzelf."
+    "nl": "De eerste link<span class='blue'>*</span> in een Wikipedia artikel stuurt je naar een breder (meer algemeen) onderwerp. Herhaal dit keer op keer en je komt uiteindelijk in een loop terecht die er heltzelfde uitziet. gellof je me niet? Probeer hetzelf.",
+    "es": "El primer enlace* de cada articulo de Wikipedia te lleva a un tema mas general. Repitiendo el proceso muchas veces, no importa que articulo, acabas en un bucle parecido. No lo crees? Pruebalo tu mismo."
   },
 
   "asterisk": {
     "en": "not in parentheses or italics",
     "ru": "Не написанная курсивом или в скобках",
-    "nl": "Niet tussen haakjes of cursief."
+    "nl": "Niet tussen haakjes of cursief.",
+    "es": "que no este en parentesis o cursiva"
   },
 
   "start": {
     "en": "Start at",
     "ru": "Начните с",
-    "nl": "Begin bij"
+    "nl": "Begin bij",
+    "es": "Empieza en"
   },
 
   "brought": {
     "en": "Brought to you by",
     "ru": "Предоставлено вам",
-    "nl": "Mogelijk gemaakt door"
+    "nl": "Mogelijk gemaakt door",
+    "es": "Creado por"
   },
 
   "coded": {
     "en": "Coded with love by",
     "ru": "Код написан с любовью",
-    "nl": "Geprogrammeerd met liefde door"
+    "nl": "Geprogrammeerd met liefde door",
+    "es": "Programado con amor por"
   },
 
   "source": {
     "en": "Source code available on",
     "ru": "Исходный код доступен на",
-    "nl": "Broncode beschikbaar op"
+    "nl": "Broncode beschikbaar op",
+    "es": "Codigo fuente disponible en"
   },
 
   "donating": {
     "en": "Consider donating to",
     "ru": "Постарайтесь пожертвовать",
-    "nl": "Overweeg een donatie voor"
+    "nl": "Overweeg een donatie voor",
+    "es": "Considera donar a"
   },
 
   "description": {
     "en": "The first link in a Wikipedia article will take you to a broader subject. Repeat this over and over, and you'll enter a loop. See for yourself!",
     "ru": "Первая ссылка в любой статье Википедии приведет вас к более широкой теме. Повторяя это действие снова и снова, вы вероятно окажитесь в повторяющемся цикле. Попробуйте сами!",
-    "nl": "De eerste link in een Wikipedia artikel brengt je naar een breder onderwero. Herhaal dit keer op keer en je komt in een loop terecht. Probeer het zelf!"
+    "nl": "De eerste link in een Wikipedia artikel brengt je naar een breder onderwero. Herhaal dit keer op keer en je komt in een loop terecht. Probeer het zelf!",
+    "es": "El primer enlace de cada articulo de Wikipedia te lleva a un tema mas general. Repitiendo el proceso muchas veces, acabas en un bucle. Compruebalo tu mismo!"
   },
 
   "title": {
     "en": "Wikipedia loop for",
     "ru": "Викицикл для",
-    "nl": "Wikipedia loop voor"
+    "nl": "Wikipedia loop voor",
+    "es": "Bucle en wikipedia en"
   },
 
   "frontTitle": {
     "en": "Find loops in the network of Wikipedia links",
     "ru": "Найти петель в сети Wikipedia ссылки",
-    "nl": "Vind loops in het network van Wikipedia links"
+    "nl": "Vind loops in het network van Wikipedia links",
+    "es": "Encuentra bucles en la red de enlaces de Wikipedia"
   }
 }

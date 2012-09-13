@@ -5,7 +5,7 @@ require 'json'
 
 before do
   @lang = request.host.split('.')[0]
-  if @lang == 'localhost' or @lang == 'wikiloopr'
+  if @lang == 'localhost' or @lang == 'wikiloopr' or @lang == 'www'
     @lang = 'en'
   end
   @copy = JSON.parse(File.read("copy.json"))
