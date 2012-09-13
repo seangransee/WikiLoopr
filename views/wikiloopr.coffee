@@ -17,7 +17,7 @@ find_first_link_in_page = (pagename, ret) ->
       html = html.replace imgRegex, ''
     doc = document.createElement('html')
     $(doc).append html
-    taglist = ['.infobox', '.dablink', '.thumb', '.vcard', '.vertical-navbox', '.metadata', '.ambox', '#coordinates', '.geography', '.right', '.toc', '.nowraplinks', '.collapsible', '.collapsed', '.navbox-inner', '.toccolours']
+    taglist = ['.infobox', '.dablink', '.thumb', '.vcard', '.vertical-navbox', '.metadata', '.ambox', '#coordinates', '.geography', '.right', '.toc', '.nowraplinks', '.collapsible', '.collapsed', '.navbox-inner', '.toccolours', '.biota', '.infobox_v2']
     doc = remove_tags(doc, taglist)
     for table in $(doc).find('table')
       if $(table).css('float') == 'right'
@@ -54,8 +54,9 @@ find_first_link_in_elements = (elements) ->
       $(this).attr('href', i)
       i += 1
     paragraphHTML = $(element).html()
-    paragraphHTML = paragraphHTML.replace(/\(.[^\(]*?\)/g, "") while paragraphHTML.match(/\(.+?\)/g)
-    paragraphHTML = paragraphHTML.replace(/\s+/g, " ")
+    while paragraphHTML.match(/\(.*?\)/g)
+      paragraphHTML = paragraphHTML.replace(/\(.[^\(]*?\)/g, "")
+      paragraphHTML = paragraphHTML.replace(/\(\)/g, "")
     element = document.createElement('p')
     $(element).append paragraphHTML
     linkIndex = $(element).find('a').first().attr('href')
