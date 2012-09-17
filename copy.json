@@ -36,30 +36,30 @@
   },
 
   "coded": {
-    "en": "Coded with love by",
-    "ru": "Код написан с любовью",
-    "nl": "Geprogrammeerd met liefde door",
-    "es": "Programado con amor por",
-    "fr": "Codé avec l'amour par",
-    "de": "Mit Liebe codiert von"
+    "en": "Coded with love by <a href='http://seangransee.com'>Sean Gransee</a>.",
+    "ru": "Код написан с любовью <a href='http://seangransee.com'>Sean Gransee</a>.",
+    "nl": "Geprogrammeerd met liefde door <a href='http://seangransee.com'>Sean Gransee</a>.",
+    "es": "Programado con amor por <a href='http://seangransee.com'>Sean Gransee</a>.",
+    "fr": "Codé avec l'amour par <a href='http://seangransee.com'>Sean Gransee</a>.",
+    "de": "Mit Liebe codiert von <a href='http://seangransee.com'>Sean Gransee</a>."
   },
 
   "source": {
-    "en": "Source code available on",
-    "ru": "Исходный код доступен на",
-    "nl": "Broncode beschikbaar op",
-    "es": "Codigo fuente disponible en",
-    "fr": "Source code est disponible à",
-    "de": ""
+    "en": "<a href='https://github.com/seangransee/WikiLoopr'>Source code</a> available on GitHub.",
+    "ru": "Исходный код доступен на <a href='https://github.com/seangransee/WikiLoopr'>GitHub</a>.",
+    "nl": "Broncode beschikbaar op <a href='https://github.com/seangransee/WikiLoopr'>GitHub</a>.",
+    "es": "Codigo fuente disponible en <a href='https://github.com/seangransee/WikiLoopr'>GitHub</a>.",
+    "fr": "Source code est disponible à <a href='https://github.com/seangransee/WikiLoopr'>GitHub</a>.",
+    "de": "Der Quellcode ist auf <a href='https://github.com/seangransee/WikiLoopr'>GitHub</a> vefuegbar"
   },
 
   "donating": {
-    "en": "Consider donating to",
-    "ru": "Постарайтесь пожертвовать",
-    "nl": "Overweeg een donatie voor",
-    "es": "Considera donar a",
-    "fr": "Envisagez donner à",
-    "de": ""
+    "en": "Consider <a href='http://wikimediafoundation.org/wiki/Donate/en'>donating</a> to Wikipedia.",
+    "ru": "Постарайтесь пожертвовать <a href='http://wikimediafoundation.org/wiki/Donate/en'>Wikipedia</a>.",
+    "nl": "Overweeg een donatie voor <a href='http://wikimediafoundation.org/wiki/Donate/en'>Wikipedia</a>.",
+    "es": "Considera donar a <a href='http://wikimediafoundation.org/wiki/Donate/en'>Wikipedia</a>.",
+    "fr": "Envisagez donner à <a href='http://wikimediafoundation.org/wiki/Donate/en'>Wikipedia</a>.",
+    "de": "Bitte ueberlegn Sie sich, an <a href='http://wikimediafoundation.org/wiki/Donate/en'>Wikipedia</a> zu spenden."
   },
 
   "description": {

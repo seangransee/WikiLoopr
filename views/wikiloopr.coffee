@@ -17,13 +17,15 @@ find_first_link_in_page = (pagename, ret) ->
       html = html.replace imgRegex, ''
     doc = document.createElement('html')
     $(doc).append html
+    link = find_first_link_in_elements $(doc).children('p')
+    return ret link if link?
+    link = find_first_link_in_elements $(doc).children('ul').find('li')
+    return ret link if link?
     taglist = ['.infobox', '.dablink', '.thumb', '.vcard', '.vertical-navbox', '.metadata', '.ambox', '#coordinates', '.geography', '.right', '.toc', '.nowraplinks', '.collapsible', '.collapsed', '.navbox-inner', '.toccolours', '.biota', '.infobox_v2', '.NavHead', '.NavContent']
     doc = remove_tags(doc, taglist)
     for table in $(doc).find('table')
       if $(table).css('float') == 'right'
         $(table).remove()
-    link = find_first_link_in_elements $(doc).find('p, li')
-    return ret link if link?
     link = find_first_link_in_elements $(doc).find('td')
     return ret link if link?
 
@@ -45,7 +47,7 @@ Array::remove = ->
 find_first_link_in_elements = (elements) ->
   boldItems = $(elements).find('b, strong')
   for element in elements
-    taglist = ['i', '.new', 'sup', '.nowrap', '.extiw', '.IPA', 'img', 'b', 'strong', '.unicode', 'small']
+    taglist = ['i', '.new', 'sup', '.nowrap', '.extiw', '.IPA', 'img', 'b', 'strong', '.unicode', 'small', '.external']
     element = remove_tags(element, taglist)
     i = 0
     links = []
@@ -61,7 +63,6 @@ find_first_link_in_elements = (elements) ->
     $(element).append paragraphHTML
     linkIndex = $(element).find('a').first().attr('href')
     link = links[linkIndex]
-    console.log link.substr(6) if link?
     return link.substr(6) if link?
   firstBoldLink = $(boldItems).find('a').first().attr('href')
   return firstBoldLink.substr(6) if firstBoldLink?
