@@ -173,7 +173,7 @@ $ ->
     find_all_links pagename, []
   setInterval swapColors, 1000
 
-  $("a[href^=http]").each ->
+  $(".bottom a[href^=http]").each ->
     if @href.indexOf(location.hostname) is -1
       $(this).attr
         target: "_blank"
