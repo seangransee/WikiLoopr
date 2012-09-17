@@ -3,69 +3,89 @@
     "en": "The first link<span class='blue'>*</span> in a Wikipedia article will take you to a broader subject. Repeat this over and over, and you'll usually end up in a similar loop. Don't believe me? Try it yourself.",
     "ru": "Первая ссылка<span class='blue'>*</span> в любой статье Википедии приведет вас к более широкой теме. Повторяя это действие снова и снова, вы вероятно окажитесь в аналогичном цикле. Не верите? Попробуйте сами.",
     "nl": "De eerste link<span class='blue'>*</span> in een Wikipedia artikel stuurt je naar een breder (meer algemeen) onderwerp. Herhaal dit keer op keer en je komt uiteindelijk in een loop terecht die er heltzelfde uitziet. gellof je me niet? Probeer hetzelf.",
-    "es": "El primer enlace* de cada articulo de Wikipedia te lleva a un tema mas general. Repitiendo el proceso muchas veces, no importa que articulo, acabas en un bucle parecido. No lo crees? Pruebalo tu mismo."
+    "es": "El primer enlace<span class='blue'>*</span> de cada articulo de Wikipedia te lleva a un tema mas general. Repitiendo el proceso muchas veces, no importa que articulo, acabas en un bucle parecido. No lo crees? Pruebalo tu mismo.",
+    "fr": "Le premier lien<span class='blue'>*</span> dans un article de Wikipedia vous prendra à un sujet plus large. Répétez continuellement, et vous finirez dans une boucle similaire. Ne pas me croyez? L'essayer vous.",
+    "de": "Der erste Link<span class='blue'>*</span> in einem Wikipedia-Artikel führt Sie zu einem umfassenderen Fachgebiet. Wenn Sie diesen Vorgang immer wieder wiederholen, dann landen Sie für gewöhnlich in einem sogenannten ‘Loop’, sprich einer Endlosschleife. Glauben Sie mir nicht? Probieren Sie es einmal selbst."
   },
 
   "asterisk": {
     "en": "not in parentheses or italics",
     "ru": "Не написанная курсивом или в скобках",
     "nl": "Niet tussen haakjes of cursief.",
-    "es": "que no este en parentesis o cursiva"
+    "es": "que no este en parentesis o cursiva",
+    "fr": "pas dans les parenthèses ou l'italique",
+    "de": "keine Klammern und Kursivschrift"
   },
 
   "start": {
     "en": "Start at",
     "ru": "Начните с",
     "nl": "Begin bij",
-    "es": "Empieza en"
+    "es": "Empieza en",
+    "fr": "Commencez avec",
+    "de": "Beginne hier:"
   },
 
   "brought": {
     "en": "Brought to you by",
     "ru": "Предоставлено вам",
     "nl": "Mogelijk gemaakt door",
-    "es": "Creado por"
+    "es": "Creado por",
+    "fr": "Amené à vous par",
+    "de": "Diese wird Ihnen praesentiert von"
   },
 
   "coded": {
     "en": "Coded with love by",
     "ru": "Код написан с любовью",
     "nl": "Geprogrammeerd met liefde door",
-    "es": "Programado con amor por"
+    "es": "Programado con amor por",
+    "fr": "Codé avec l'amour par",
+    "de": "Mit Liebe codiert von"
   },
 
   "source": {
     "en": "Source code available on",
     "ru": "Исходный код доступен на",
     "nl": "Broncode beschikbaar op",
-    "es": "Codigo fuente disponible en"
+    "es": "Codigo fuente disponible en",
+    "fr": "Source code est disponible à",
+    "de": ""
   },
 
   "donating": {
     "en": "Consider donating to",
     "ru": "Постарайтесь пожертвовать",
     "nl": "Overweeg een donatie voor",
-    "es": "Considera donar a"
+    "es": "Considera donar a",
+    "fr": "Envisagez donner à",
+    "de": ""
   },
 
   "description": {
     "en": "The first link in a Wikipedia article will take you to a broader subject. Repeat this over and over, and you'll enter a loop. See for yourself!",
     "ru": "Первая ссылка в любой статье Википедии приведет вас к более широкой теме. Повторяя это действие снова и снова, вы вероятно окажитесь в повторяющемся цикле. Попробуйте сами!",
     "nl": "De eerste link in een Wikipedia artikel brengt je naar een breder onderwero. Herhaal dit keer op keer en je komt in een loop terecht. Probeer het zelf!",
-    "es": "El primer enlace de cada articulo de Wikipedia te lleva a un tema mas general. Repitiendo el proceso muchas veces, acabas en un bucle. Compruebalo tu mismo!"
+    "es": "El primer enlace de cada articulo de Wikipedia te lleva a un tema mas general. Repitiendo el proceso muchas veces, acabas en un bucle. Compruebalo tu mismo!",
+    "fr": "Le premier lien dans un article de Wikipedia vous prendra à un sujet plus large. Répétez continuellement, et vous finirez dans une boucle similaire. L'essayer vous!",
+    "de": "Der erste Link in einem Wikipedia-Artikel führt Sie zu einem umfassenderen Fachgebiet. Immer wieder wiederholen, und man findet sich in einem ‘Loop’ wieder. Versuchen Sie es mal selbst!"
   },
 
   "title": {
     "en": "Wikipedia loop for",
     "ru": "Викицикл для",
     "nl": "Wikipedia loop voor",
-    "es": "Bucle en wikipedia en"
+    "es": "Bucle en wikipedia en",
+    "fr": "Wikipedia boucle pour",
+    "de": "Wikipedia loop für"
   },
 
   "frontTitle": {
     "en": "Find loops in the network of Wikipedia links",
     "ru": "Найти петель в сети Wikipedia ссылки",
     "nl": "Vind loops in het network van Wikipedia links",
-    "es": "Encuentra bucles en la red de enlaces de Wikipedia"
+    "es": "Encuentra bucles en la red de enlaces de Wikipedia",
+    "fr": "Trouvez les boucles dans le réseau de liens de Wikipedia.",
+    "de": "Finde Schleifen im Netzwerk von Wikipedia-Links."
   }
 }
