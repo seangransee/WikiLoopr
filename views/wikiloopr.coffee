@@ -17,12 +17,12 @@ find_first_link_in_page = (pagename, ret) ->
       html = html.replace imgRegex, ''
     doc = document.createElement('html')
     $(doc).append html
+    taglist = ['.infobox', '.dablink', '.thumb', '.vcard', '.vertical-navbox', '.metadata', '.ambox', '#coordinates', '.geography', '.right', '.toc', '.nowraplinks', '.collapsible', '.collapsed', '.navbox-inner', '.toccolours', '.biota', '.infobox_v2', '.NavHead', '.NavContent']
+    doc = remove_tags(doc, taglist)
     link = find_first_link_in_elements $(doc).children('p')
     return ret link if link?
     link = find_first_link_in_elements $(doc).children('ul').find('li')
     return ret link if link?
-    taglist = ['.infobox', '.dablink', '.thumb', '.vcard', '.vertical-navbox', '.metadata', '.ambox', '#coordinates', '.geography', '.right', '.toc', '.nowraplinks', '.collapsible', '.collapsed', '.navbox-inner', '.toccolours', '.biota', '.infobox_v2', '.NavHead', '.NavContent']
-    doc = remove_tags(doc, taglist)
     for table in $(doc).find('table')
       if $(table).css('float') == 'right'
         $(table).remove()
