@@ -47,7 +47,7 @@ Array::remove = ->
 find_first_link_in_elements = (elements) ->
   boldItems = $(elements).find('b, strong')
   for element in elements
-    taglist = ['i', '.new', 'sup', '.nowrap', '.extiw', '.IPA', 'img', 'b', 'strong', '.unicode', 'small', '.external']
+    taglist = ['i', '.new', 'sup', '.nowrap', '.extiw', '.IPA', 'img', 'b', 'strong', '.unicode', 'small', '.external', '[title="Help:Pronunciation respelling key"]']
     element = remove_tags(element, taglist)
     i = 0
     links = []
