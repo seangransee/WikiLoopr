@@ -1,7 +1,8 @@
 require 'sinatra'
 require 'coffee-script'
-require 'sass'
+require 'sass/plugin/rack'
 require 'json'
+use Sass::Plugin::Rack
 
 before do
   @lang = request.host.split('.')[0]
