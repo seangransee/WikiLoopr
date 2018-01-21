@@ -19,9 +19,9 @@ find_first_link_in_page = (pagename, ret) ->
     $(doc).append html
     taglist = ['.infobox', '.dablink', '.thumb', '.vcard', '.vertical-navbox', '.metadata', '.ambox', '#coordinates', '.geography', '.right', '.toc', '.nowraplinks', '.collapsible', '.collapsed', '.navbox-inner', '.toccolours', '.biota', '.infobox_v2', '.NavHead', '.NavContent']
     doc = remove_tags(doc, taglist)
-    link = find_first_link_in_elements $(doc).children('p')
+    link = find_first_link_in_elements $(doc).find('p')
     return ret link if link?
-    link = find_first_link_in_elements $(doc).children('ul').find('li')
+    link = find_first_link_in_elements $(doc).find('ul').find('li')
     return ret link if link?
     for table in $(doc).find('table')
       if $(table).css('float') == 'right'
@@ -45,6 +45,7 @@ Array::remove = ->
   this
 
 find_first_link_in_elements = (elements) ->
+  console.log(elements)
   boldItems = $(elements).find('b, strong')
   for element in elements
     taglist = ['i', '.new', 'sup', '.nowrap', '.extiw', '.IPA', 'img', 'b', 'strong', '.unicode', 'small', '.external', '[title="Help:Pronunciation respelling key"]']
@@ -95,7 +96,7 @@ put_on_page = (href, title) ->
   $("html, body").animate
     scrollTop: $(item).offset().top
   , 0
-  
+
 swapColors = ->
   endItems = $('.end')
   if $(endItems[0]).hasClass 'end1'
@@ -122,14 +123,14 @@ showResults = ->
   initialLength = 0
   $('#results li a').each ->
     if i is 0
-      $('.first').text $(this).text() 
-    if $(this).hasClass 'loopstart' 
+      $('.first').text $(this).text()
+    if $(this).hasClass 'loopstart'
       initialLength = i - 1
-      $('.initialLength').text initialLength 
-      $('.loopstart').text $(this).text() 
+      $('.initialLength').text initialLength
+      $('.loopstart').text $(this).text()
     i++
   loopLength = i - initialLength - 3
-  $('.loopLength').text loopLength 
+  $('.loopLength').text loopLength
   $('.loopend').text $('#results li a').last().text()
   $('#side').fadeIn()
 
