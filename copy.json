@@ -53,15 +53,6 @@
     "de": "Der Quellcode ist auf <a href='https://github.com/seangransee/WikiLoopr'>GitHub</a> vefuegbar"
   },
 
-  "donating": {
-    "en": "Consider <a href='http://wikimediafoundation.org/wiki/Donate/en'>donating</a> to Wikipedia.",
-    "ru": "Постарайтесь пожертвовать <a href='http://wikimediafoundation.org/wiki/Donate/en'>Wikipedia</a>.",
-    "nl": "Overweeg een donatie voor <a href='http://wikimediafoundation.org/wiki/Donate/en'>Wikipedia</a>.",
-    "es": "Considera donar a <a href='http://wikimediafoundation.org/wiki/Donate/en'>Wikipedia</a>.",
-    "fr": "Envisagez donner à <a href='http://wikimediafoundation.org/wiki/Donate/en'>Wikipedia</a>.",
-    "de": "Bitte ueberlegn Sie sich, an <a href='http://wikimediafoundation.org/wiki/Donate/en'>Wikipedia</a> zu spenden."
-  },
-
   "description": {
     "en": "The first link in a Wikipedia article will take you to a broader subject. Repeat this over and over, and you'll enter a loop. See for yourself!",
     "ru": "Первая ссылка в любой статье Википедии приведет вас к более широкой теме. Повторяя это действие снова и снова, вы вероятно окажитесь в повторяющемся цикле. Попробуйте сами!",

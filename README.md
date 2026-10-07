@@ -43,4 +43,5 @@ WikiLoopr selects its language and extracts the article title automatically.
 The first eligible link is taken from article paragraphs, excluding parentheses,
 italics, bold definitions, sidebars, citations, and non-article links. Lists are
 used as a fallback. Chains stop on a repeated canonical article title, a dead
-end, a request error, the Stop button, or the 200-article limit.
+end, a request error, the Escape key, or the 200-article limit. The original
+2012 interface is preserved, with the donation sentence removed.
