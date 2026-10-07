@@ -78,8 +78,9 @@ async function startChain(title, updateHistory = true) {
     if (result.reason === 'loop') {
       results.children[result.loopStart].classList.add('loop-start');
       results.lastElementChild.classList.add('loop-end');
-      message(`Loop found! ${result.pages.length - 1} unique articles.`);
-      summary.textContent = `${result.loopStart} steps to the loop · ${result.loopLength} articles in the loop · ${result.pages[result.loopStart]} → … → ${result.pages.at(-1)}`;
+      const unique = result.pages.length - 1;
+      message(`Loop found! ${unique} unique ${unique === 1 ? 'article' : 'articles'}.`);
+      summary.textContent = `${result.loopStart} ${result.loopStart === 1 ? 'step' : 'steps'} to the loop · ${result.loopLength} ${result.loopLength === 1 ? 'article' : 'articles'} in the loop · ${result.pages[result.loopStart]} → … → ${result.pages.at(-1)}`;
       summary.hidden = false;
     } else if (result.reason === 'dead-end') {
       message(`Stopped at ${result.pages.at(-1)}: no eligible article link found.`);
