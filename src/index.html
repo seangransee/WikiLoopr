@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Follow the first links in Wikipedia articles until you enter a loop. See for yourself!">
+    <title>WikiLoopr — Find loops in Wikipedia</title>
+    <link rel="icon" href="./assets/favicon.png">
+    <link rel="stylesheet" href="./styles.css">
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <main id="main">
+      <nav id="languages" aria-label="Wikipedia language">
+        <a href="?lang=en" lang="en">English</a>
+        <a href="?lang=es" lang="es">Español</a>
+        <a href="?lang=fr" lang="fr">Français</a>
+        <a href="?lang=de" lang="de">Deutsch</a>
+        <a href="?lang=ru" lang="ru">русский</a>
+        <a href="?lang=nl" lang="nl">Nederlands</a>
+      </nav>
+      <a href="./" aria-label="WikiLoopr home"><img id="logo" src="./assets/logo.png" width="456" height="99" alt="WikiLoopr"></a>
+      <p id="explanation">The first link in a Wikipedia article will take you to a broader subject. Repeat this over and over, and you'll usually end up in a similar loop. Don't believe me? Try it yourself.</p>
+      <p id="small">*not in parentheses or italics</p>
+      <form id="start">
+        <label id="startat" for="article">Start at</label>
+        <div class="controls">
+          <input id="article" name="article" type="text" list="suggestions" autocomplete="off" placeholder="Apple">
+          <datalist id="suggestions"></datalist>
+          <button id="go" type="submit">Go</button>
+          <button id="stop" type="button" hidden>Stop</button>
+        </div>
+      </form>
+      <p id="status" role="status" aria-live="polite">Choose an article and press Enter or Go.</p>
+      <ol id="results" aria-label="Wikipedia article chain"></ol>
+      <aside id="summary" hidden aria-label="Loop summary"></aside>
+    </main>
+    <footer>
+      <p id="coded">Coded with love by <a href="https://seangransee.com">Sean Gransee</a>.</p>
+      <p id="source"><a href="https://github.com/seangransee/WikiLoopr">Source code</a> available on GitHub.</p>
+      <p id="donating">Consider <a href="https://donate.wikimedia.org/">donating</a> to Wikipedia.</p>
+    </footer>
+  </body>
+</html>

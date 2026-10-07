@@ -1,0 +1,13 @@
+{
+  "name": "wikiloopr",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "start": "npm run build && node scripts/serve.mjs",
+    "test": "node --test"
+  },
+  "engines": { "node": ">=22" },
+  "devDependencies": { "jsdom": "^26.1.0" }
+}
