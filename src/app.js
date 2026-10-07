@@ -1,4 +1,5 @@
 import { findFirstLink, walkChain } from './chain.js';
+import { pause, requestWiki } from './wiki-api.js';
 
 const languages = ['en', 'es', 'fr', 'de', 'ru', 'nl'];
 const input = document.querySelector('#article');
@@ -14,6 +15,7 @@ let run;
 let search;
 let debounce;
 const cache = new Map();
+let lastRequest = 0;
 
 function message(text, error = false) {
   status.textContent = text;
@@ -21,13 +23,11 @@ function message(text, error = false) {
 }
 
 async function api(parameters, signal) {
-  const url = new URL(`https://${language}.wikipedia.org/w/api.php`);
-  url.search = new URLSearchParams({ format: 'json', origin: '*', ...parameters });
-  const response = await fetch(url, { signal: AbortSignal.any([signal, AbortSignal.timeout(20000)]), credentials: 'omit' });
-  if (!response.ok) throw new Error(`Wikipedia returned HTTP ${response.status}. Please try again.`);
-  const json = await response.json();
-  if (json.error) throw new Error(json.error.info || 'Wikipedia could not find this article.');
-  return json;
+  await pause(Math.max(0, 600 - (Date.now() - lastRequest)), signal);
+  lastRequest = Date.now();
+  return requestWiki({ language, parameters, signal, onRetry: () => {
+    if (parameters.action === 'parse') message('Wikipedia is busy. Waiting before retrying…');
+  } });
 }
 
 async function loadPage(title, signal) {
