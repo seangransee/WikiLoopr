@@ -33,6 +33,13 @@ test('supports encoded multilingual titles and list-only articles', () => {
   assert.equal(articleTitle('/wiki/Cat%C3%A9gorie:Physique', 'fr'), null);
 });
 
+test('counts parentheses across italic and bold formatting without following their links', () => {
+  assert.equal(first('<p>Example (<i>aside)</i>, then <a href="/wiki/Correct">correct</a>.</p>'), 'Correct');
+  assert.equal(first('<p><i>(aside</i> <a href="/wiki/Inside">inside</a>) then <a href="/wiki/Correct">correct</a>.</p>'), 'Correct');
+  assert.equal(first('<p>(<b>aside)</b> <a href="/wiki/Correct">correct</a>.</p>'), 'Correct');
+  assert.equal(first('<p><i><a href="/wiki/Italic">italic</a></i> <a href="/wiki/Correct">correct</a>.</p>'), 'Correct');
+});
+
 test('finds loops using canonical titles, including redirects', async () => {
   const emitted = [];
   const graph = {

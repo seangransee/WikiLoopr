@@ -48,7 +48,7 @@ export function findFirstLink(document, language, currentTitle) {
   for (const selector of ['p', 'ul > li, ol > li']) {
     for (const paragraph of root.querySelectorAll(selector)) {
       let depth = 0;
-      function visit(node) {
+      function visit(node, suppressLinks = false) {
         if (node.nodeType === 3) {
           for (const char of node.textContent) {
             if (char === '(' || char === '（') depth++;
@@ -57,13 +57,15 @@ export function findFirstLink(document, language, currentTitle) {
           return null;
         }
         if (node.nodeType !== 1) return null;
-        if (node.matches(inlineExcluded)) return null;
-        if (node.tagName === 'A' && depth === 0) {
+        // Formatting can contain a parenthesis opened/closed in adjacent text.
+        // Read its text to maintain depth while ignoring its links.
+        const skipLinks = suppressLinks || node.matches(inlineExcluded);
+        if (node.tagName === 'A' && depth === 0 && !skipLinks) {
           const title = articleTitle(node.getAttribute('href'), language, currentTitle);
           if (title) return title;
         }
         for (const child of node.childNodes) {
-          const found = visit(child);
+          const found = visit(child, skipLinks);
           if (found) return found;
         }
         return null;

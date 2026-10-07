@@ -37,6 +37,8 @@ Enable Enforce HTTPS after GitHub provisions the certificate. The repository's
 Share an article using `?lang=en&article=Apple`; query-string routing allows
 direct visits and reloads on static hosting. Supported Wikipedia editions are
 English, Spanish, French, German, Russian, and Dutch.
+You can also paste a Wikipedia article URL into the starting-article field;
+WikiLoopr selects its language and extracts the article title automatically.
 
 The first eligible link is taken from article paragraphs, excluding parentheses,
 italics, bold definitions, sidebars, citations, and non-article links. Lists are
