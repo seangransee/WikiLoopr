@@ -1,38 +1,31 @@
-:root { color-scheme: light; --red: #662222; --blue: #0c2433; }
-* { box-sizing: border-box; }
-body { margin: 0; background: #eee; color: var(--red); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: 300; }
-#main { width: min(850px, calc(100% - 40px)); margin: 0 auto; text-align: center; font-size: 22px; }
-#languages { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 12px; padding: 12px 0; font-size: 13px; }
-#languages a { color: #666; }
-#languages a[aria-current] { color: var(--blue); font-weight: bold; }
-#logo { display: block; width: min(456px, 100%); height: auto; margin: 10px auto 24px; }
-#explanation { text-align: left; line-height: 1.5; margin: 0; }
-.blue, #small { color: var(--blue); }
-#small { text-align: left; font-size: 14px; margin: 10px 0 30px; }
-#start { display: flex; align-items: center; justify-content: center; gap: 16px; margin: 28px 0 16px; font-size: 36px; }
-.controls { display: flex; gap: 8px; min-width: 0; }
-input { min-width: 0; width: 390px; border: 3px solid var(--blue); background: #ddd; padding: 8px 10px; font: inherit; font-size: 28px; color: var(--blue); border-radius: 3px; }
-button { border: 2px solid var(--blue); border-radius: 3px; background: var(--blue); color: #fff; padding: 8px 14px; font: inherit; font-size: 18px; cursor: pointer; }
-button:disabled { opacity: .6; cursor: wait; }
-button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid #b16b28; outline-offset: 3px; }
+/* Original views/styles.sass from 91852cd, compiled to CSS. Asset paths are
+   relative for GitHub Pages. Only nonvisual accessibility/animation helpers follow. */
+body { background-color: #EEE; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
+#main { width: 850px; margin: 0 auto; text-align: center; color: #662222; font-size: 140%; }
+#main #logo { margin-top: 20px; }
+#main #explanation { text-align: left; margin-top: 20px; }
+#main #explanation .blue { color: #0c2433; }
+#main #small { text-align: left; font-size: 60%; margin-top: 10px; color: #0c2433; }
+#main #search { margin-top: 20px; font-size: 200%; }
+#main #search #startat { margin-top: -8px; }
+#main #search #start { margin-top: 40px; }
+#main #search #start input { border: 3px solid #0c2433; font-size: 100%; width: 450px; background-color: #DDD; margin-top: -10px; }
+#main #results { margin-top: 20px; margin-bottom: 30px; list-style-type: none; }
+#main #results li { margin-bottom: 10px; }
+#main #results li a { text-decoration: none; color: #662222; }
+#main #results li a.end1 { color: #0c2433; font-weight: bold; }
+.bottom { font-size: 60%; color: #666; padding: 10px; }
+.bottom a { color: #333; }
+#bottomright { position: fixed; right: 0; bottom: 0; text-align: right; line-height: 14px; }
+#loading { display: none; }
+#side { display: none; position: fixed; top: 40%; right: 20px; font-size: 70%; padding-left: 26px; background-image: url('./assets/looparrow.png'); background-repeat: no-repeat; background-position: bottom left; }
+#side span { display: block; }
+#side .initialLength, #side .loopLength { padding: 11px 0; color: #666; font-weight: bold; background-image: url('./assets/downarrow.png'); background-repeat: no-repeat; background-position: 50% 0; }
+#languages { position: absolute; top: 0; right: 0; padding-right: 10px; }
+#languages a { color: #666; font-size: 50%; }
+
 [hidden] { display: none !important; }
-#status { color: #666; min-height: 24px; font-size: 15px; line-height: 1.5; }
-#status.error { color: var(--red); }
-#results { padding: 0; margin: 24px 0; list-style: none; }
-#results li { margin-bottom: 10px; }
-#results a { color: var(--red); text-decoration: none; }
-#results a:hover { text-decoration: underline; }
-#results li:last-child a, #results .loop-start a, #results .loop-end a { color: var(--blue); font-weight: bold; }
-#results .loop-start, #results .loop-end { background: #dce4e8; border-radius: 3px; padding: 6px; }
-#summary { color: var(--blue); font-size: 18px; line-height: 1.7; margin: 30px 0; border-top: 1px solid #c8cccf; padding-top: 18px; }
-footer { color: #666; font-size: 12px; text-align: center; line-height: 1.7; margin: 50px 20px 20px; }
-footer p { margin: 0; }
-footer a { color: #333; }
-@media (max-width: 680px) {
-  #main { font-size: 19px; }
-  #languages { justify-content: center; }
-  #start { display: block; text-align: left; font-size: 25px; }
-  .controls { margin-top: 10px; }
-  input { width: 100%; font-size: 22px; flex: 1; }
-  button { padding: 8px 10px; }
-}
+#loading:not([hidden]), #side:not([hidden]) { display: inline-block; }
+.screen-reader-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+#results li { animation: appear 300ms; }
+@keyframes appear { from { opacity: 0; } to { opacity: 1; } }
