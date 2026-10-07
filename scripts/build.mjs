@@ -3,6 +3,7 @@
 // Post-run notes: dist is disposable; deployment uploads only this directory.
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
 
 const root = new URL('../', import.meta.url);
 const output = new URL('dist/', root);
@@ -20,6 +21,17 @@ for (const language of Object.keys(copy.main)) {
     .split(/\r?\n/).map(line => line.trim()).filter(Boolean);
 }
 await writeFile(new URL('data.json', output), JSON.stringify({ copy, starts }));
+// GitHub Pages caches files for ten minutes. Pin related files to one content
+// version so revisiting users receive a consistent, current build after deploy.
+const versioned = ['app.js', 'chain.js', 'wiki-api.js', 'input.js', 'styles.css', 'data.json'];
+const hash = createHash('sha256');
+for (const name of versioned) hash.update(await readFile(new URL(name, output)));
+const version = hash.digest('hex').slice(0, 16);
+for (const name of ['app.js', 'index.html']) {
+  const file = new URL(name, output);
+  const source = await readFile(file, 'utf8');
+  await writeFile(file, source.replace(/\.\/(app\.js|chain\.js|wiki-api\.js|input\.js|styles\.css|data\.json)/g, `./$1?v=${version}`));
+}
 await writeFile(new URL('.nojekyll', output), '');
 await cp(new URL('CNAME', root), new URL('CNAME', output));
 console.log(`Built WikiLoopr in ${fileURLToPath(output)}`);

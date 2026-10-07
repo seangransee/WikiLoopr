@@ -1,7 +1,7 @@
 import { findFirstLink, walkChain } from './chain.js';
 import { pause, requestWiki } from './wiki-api.js';
+import { languages, normalizeArticleInput } from './input.js';
 
-const languages = ['en', 'es', 'fr', 'de', 'ru', 'nl'];
 const input = document.querySelector('#article');
 const status = document.querySelector('#status');
 const results = document.querySelector('#results');
@@ -53,24 +53,36 @@ function addPage(title) {
   message(`Following ${title}… (${results.children.length} articles)`);
 }
 
-async function startChain(title, updateHistory = true) {
+function cancelWork() {
   run?.abort();
   search?.abort();
   clearTimeout(debounce);
-  const controller = new AbortController();
-  run = controller;
-  title = title.trim() || input.placeholder;
-  input.value = title;
+  run = undefined;
+  search = undefined;
   suggestions.replaceChildren();
+  go.disabled = !data;
+  stop.hidden = true;
+}
+
+async function startChain(title, updateHistory = true) {
+  cancelWork();
   results.replaceChildren();
   summary.hidden = true;
+  let selection;
+  try { selection = normalizeArticleInput(title.trim() || input.placeholder, language); }
+  catch (error) { message(error.message, true); return; }
+  if (selection.language !== language) configureLanguage(selection.language);
+  title = selection.title;
+  const controller = new AbortController();
+  run = controller;
+  input.value = title;
   go.disabled = true;
   stop.hidden = false;
   document.title = `${data.copy.title[language]} ${title} — WikiLoopr`;
   if (updateHistory) {
     const url = new URL(location.href);
     url.search = new URLSearchParams({ lang: language, article: title });
-    history.pushState(null, '', url);
+    if (url.href !== location.href) history.pushState(null, '', url);
   }
   message(`Loading ${title}…`);
   try {
@@ -99,9 +111,9 @@ async function startChain(title, updateHistory = true) {
   }
 }
 
-function configureLanguage() {
+function configureLanguage(override) {
   const params = new URLSearchParams(location.search);
-  language = languages.includes(params.get('lang')) ? params.get('lang') : 'en';
+  language = override || (languages.includes(params.get('lang')) ? params.get('lang') : 'en');
   document.documentElement.lang = language;
   const { copy, starts } = data;
   for (const key of ['main', 'asterisk', 'start', 'coded', 'source', 'donating']) {
@@ -126,7 +138,7 @@ document.querySelector('#start').addEventListener('submit', event => {
   if (data) startChain(input.value);
 });
 stop.addEventListener('click', () => {
-  run?.abort();
+  cancelWork();
   message(`Stopped after ${results.children.length} articles. Choose another article to start again.`);
 });
 input.addEventListener('input', () => {
@@ -150,9 +162,8 @@ input.addEventListener('input', () => {
   }, 250);
 });
 window.addEventListener('popstate', () => {
-  run?.abort();
-  search?.abort();
-  clearTimeout(debounce);
+  cancelWork();
+  if (!data) return;
   const title = configureLanguage();
   if (title) startChain(title, false);
   else {
