@@ -45,3 +45,11 @@ italics, bold definitions, sidebars, citations, and non-article links. Lists are
 used as a fallback. Chains stop on a repeated canonical article title, a dead
 end, a request error, the Escape key, or the 200-article limit. The original
 2012 interface is preserved, with the donation sentence removed.
+
+### Google Search
+
+The build publishes `robots.txt` and a sitemap for the canonical HTTPS homepage.
+Article-query URLs use the same canonical URL to consolidate duplicate app pages.
+The homepage's verification meta tag keeps Sean's Google Search Console property
+verified; retain it when updating the page. Submit `sitemap.xml` and inspect the
+homepage in Search Console to track Google's crawl and indexing status.
